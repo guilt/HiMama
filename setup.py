@@ -1,5 +1,5 @@
 """
-pymama: HiMama Downloader
+himama: HiMama Downloader
 """
 from setuptools import setup, find_packages
 
@@ -16,9 +16,9 @@ def get_readme():
     with open('README.md') as readme:
         return readme.read()
 
-setup(name='pymama',
+setup(name='himama',
       version=VERSION,
-      description="pymama: HiMama Downloader",
+      description="himama: HiMama Downloader",
       long_description=get_readme(),
       long_description_content_type='text/markdown',
       classifiers=
@@ -33,7 +33,7 @@ setup(name='pymama',
       keywords='himama playschool daycare offline backup',
       author='Karthik Kumar Viswanathan',
       author_email='karthikkumar@gmail.com',
-      url='http://github.com/guilt/pymama',
+      url='http://github.com/guilt/himama',
       license='MIT',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,

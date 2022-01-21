@@ -1,11 +1,14 @@
 .idea
 .tox
 .coverage
+.env
+
+*.log
 *.egg-info
 *.pyc
+
 venv
 build
 dist
 coverage_reports
-*.pem
-*.json
+download
