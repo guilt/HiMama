@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import getpass
 import logging
 import os
 import shutil
@@ -21,7 +22,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 SITE = "https://www.himama.com"
 USER = os.getenv("HIMAMA_USER")
 PASSWORD = os.getenv("HIMAMA_PASSWORD")
-DOWNLOAD_DIR = os.getenv("HIMAMA_DOWNLOAD_DIR", "download")
+DOWNLOAD_DIR = os.getenv("HIMAMA_DOWNLOAD_DIR", "Download")
 MAX_JOURNALS = 200000
 
 
@@ -181,31 +182,40 @@ def downloadJournals(driver):
             break
 
 
-def login(driver):
+def login(driver, user, password):
     driver.get("{}/login".format(SITE))
 
     elementUserName = driver.find_element(By.ID, "user_login")
     elementUserName.clear()
-    elementUserName.send_keys(USER)
+    elementUserName.send_keys(user)
 
     elementPassword = driver.find_element(By.ID, "user_password")
     elementPassword.clear()
-    elementPassword.send_keys(PASSWORD)
+    elementPassword.send_keys(password)
 
     elementPassword.submit()
     WebDriverWait(driver, 5).until(ExpectedConditions.url_contains("/headlines"), message="Not Logged in to Headlines.")
 
 
+def getCredentials():
+    user = USER
+    if not user:
+        user = (input("Please enter Email: ") or "").strip()
+    password = PASSWORD
+    if not password:
+        password = getpass.getpass("Please enter Password (Masked): ")
+    return user, password
+
 def main():
-    logging.info("Starting ....")
-    if not USER or not PASSWORD:
-        raise PermissionError("No Credentials Set. Ensure you set Environment Variables.")
+    user, password = getCredentials()
+    if not user or not password:
+        raise PermissionError("No Credentials Set. Ensure you set Environment Variables, or type it Interactively.")
 
     logging.info("Launching Browser ....")
     driver = getWebDriver()
 
     logging.info("Logging In ....")
-    login(driver)
+    login(driver, user, password)
 
     logging.info("Downloading Journals ....")
     downloadJournals(driver)

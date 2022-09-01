@@ -3,7 +3,7 @@ himama: HiMama Downloader
 """
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 
 def get_requirements():
     with open('requirements.txt') as requirements:
@@ -30,7 +30,7 @@ setup(name='himama',
           'Programming Language :: Python :: 3.8',
           'Programming Language :: Python :: 3.9',
       ],
-      keywords='himama playschool daycare offline backup',
+      keywords='himama playschool daycare offline backup scrape',
       author='Karthik Kumar Viswanathan',
       author_email='karthikkumar@gmail.com',
       url='http://github.com/guilt/himama',
