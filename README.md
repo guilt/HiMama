@@ -25,10 +25,8 @@ tries to use:
 - [All - Chrome Driver](https://chromedriver.chromium.org/downloads)
 - [All - Opera Driver](https://github.com/operasoftware/operachromiumdriver/releases)
 
-If you are running Linux, there may already be a package for your system
-and you may want to install it through your package manager.
-
-and level of support may vary from time to time.
+If you are running Linux, there may already be a package for your system.
+You may want to install it through your package manager.
 
 # Usage
 
@@ -46,8 +44,12 @@ set HIMAMA_USER=daddy@daddy.com
 set HIMAMA_PASSWORD=changeMe
 ```
 
-It needs a non-headless mode, or a virtual display to run.
+This typically needs a non-headless mode, a virtual display to run at least.
 
 # Questions and Feedback
 
 I wrote this in my spare time. All feedback and patches welcome.
+
+Not every WebDriver is expected to work well over a period of time, and level of
+support may vary from time to time. Moreover, the site could keep getting updated and
+break some of the existing mechanisms. If you find issues, please file it.
